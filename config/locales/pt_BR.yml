@@ -1,0 +1,229 @@
+pt-BR:
+  activerecord:
+    models:
+      comment:
+        one: "Comentário"
+        other: "Comentários"
+      active_admin/comment:
+        one: "Comentário"
+        other: "Comentários"
+      address:
+        one: "Endereço"
+        other: "Endereços"
+      analist:
+        one: "Analista"
+        other: "Analistas"
+      company:
+        one: "Empresa"
+        other: "Empresas"
+      contact:
+        one: "Contato"
+        other: "Contatos"
+      county:
+        one: "Localidade"
+        other: "Localidades"
+      regional:
+        one: "Regional"
+        other: "Regionais"
+      state:
+        one: "Estado"
+        other: "Estados"
+    attributes:
+      active_admin/comment:
+        author_type: "Autor Tipo"
+        body: "Body"
+        created_at: "Criado em"
+        namespace: "Namespace"
+        resource_type: "Tipo do Recurso"
+        updated_at: "Updated"
+      address:
+        street: "Endereço"
+        city: "Cidade"
+        zipcode: "CEP"
+        state_id: "UF"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"        
+      analist:
+        name: "Nome"
+        email: "E-mail"
+        phone: "Telefone"
+        job: "Atividade"
+        regional_id: "Regional"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      company:
+        name: "Nome"
+        fantasy: "Nome Fantasia"
+        code_cnpj: "CNPJ"
+        sap: "SAP"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      contact:
+        date: "Data"
+        description: "Descrição"
+        company: "Empresa"
+        analist: "Analista"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      county:
+        name: "Localidade"
+        latitude: "Latitude"
+        longitude: "Longitude"
+        state: "Estado"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"      
+      regional:
+        code: "Código"
+        name: "Área"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      state:
+        code: "UF"
+        name: "Estado"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+  active_admin:
+    dashboard: "Dashboard"
+    dashboard_welcome:
+      welcome: "Bem vindo ao Active Admin. Esta é a página padrão do dashboard."
+      call_to_action: "Para adicionar seções do dashboard, checkout 'app/admin/dashboard.rb'"
+    view: "Ver"
+    edit: "Editar"
+    delete: "Apagar"
+    delete_confirmation: "Você tem certeza que deseja apagar??"
+    create_another: "Cria outro %{model}"
+    new_model: "Novo %{model}"
+    edit_model: "Edita %{model}"
+    delete_model: "Apaga %{model}"
+    details: "%{model} Detalhes"
+    cancel: "Cancela"
+    empty: "Vazio"
+    previous: "Anterior"
+    next: "Próximo"
+    download: "Descarrega:"
+    has_many_new: "Adiciona Novo %{model}"
+    has_many_delete: "Apaga"
+    has_many_remove: "Remove"
+    move: "Move"
+    filters:
+      buttons:
+        filter: "Filtro"
+        clear: "Limpa Filtros"
+      predicates:
+        contains: "Contém"
+        equals: "Igual"
+        starts_with: "Começa com"
+        ends_with: "Termima com"
+        greater_than: "Maior que"
+        less_than: "Menor que"
+        gteq_datetime: "Maior ou igual a"
+        lteq_datetime: "Menor ou igual a"
+        from: "De"
+        to: "Até"
+    scopes:
+      all: "Todos"
+    search_status:
+      headline: "Status da Procura:"
+      current_scope: "Escopo:"
+      current_filters: "Filtros correntes:"
+      no_current_filters: "Nenhum"
+    status_tag:
+      "yes": "Sim"
+      "no": "Não"
+    main_content: "Por favor, implemente %{model}#main_content para mostrar o conteúdo."
+    logout: "Sair"
+    powered_by: "Powered by %{active_admin} %{version}"
+    sidebars:
+      filters: "Filtros"
+      search_status: "Estado da Pesquisa"
+    pagination:
+      empty: "Nenhum %{model} encontrado"
+      one: "Mostrando <b>1</b> %{model}"
+      one_page: "Mostrando <b>todos %{n}</b> %{model}"
+      multiple: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{total}</b> in total"
+      multiple_without_total: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b>"
+      per_page: "Por página: "
+      entry:
+        one: "entrada"
+        other: "entradas"
+    any: "Qualquer"
+    blank_slate:
+      content: "Não existem %{resource_name} ainda."
+      link: "Crie um"
+    dropdown_actions:
+      button_label: "Ações"
+    batch_actions:
+      button_label: "Ações em lote"
+      default_confirmation: "Vocẽ deseja fazer isso?"
+      delete_confirmation: "Tem certeza de que deseja excluir esses %{plural_model}?"
+      succesfully_destroyed:
+        one: "Apagado com sucesso 1 %{model}"
+        other: "Apagado com sucesso %{count} %{plural_model}"
+      selection_toggle_explanation: "(Toggle Selection)"
+      action_label: "%{title} Selecionado"
+      labels:
+        destroy: "Apagar"
+    comments:
+      created_at: "Criado"
+      resource_type: "Tipo do recurso"
+      author_type: "Tipo de autor"
+      body: "Body"
+      author: "Autor"
+      add: "Inclui comerntário"
+      delete: "Apaga comentário"
+      delete_confirmation: "Tem certeza de que deseja excluir este comentário?"
+      resource: "Recurso"
+      no_comments_yet: "Ainda não há comentários."
+      author_missing: "Anônimo"
+      title_content: "Comentários (%{count})"
+      errors:
+        empty_text: "Comentário não foi salvo, o texto estava vazio."
+    devise:
+      username:
+        title: "Usuário"
+      email:
+        title: "E-mail"
+      subdomain:
+        title: "Sub-domínio"
+      password:
+        title: "Senha"
+      password_confirmation:
+        title: "Confirme a senha"
+      sign_up:
+        title: "Inscrever"
+        submit: "Inscrever"
+      login:
+        title: "Login"
+        remember_me: "Lembre-me"
+        submit: "Login"
+      reset_password:
+        title: "Esqueceu sua senha?"
+        submit: "Resete minha senha"
+      change_password:
+        title: "Altere minha senha"
+        submit: "Altere minha senha"
+      unlock:
+        title: "Reenvie as instruções de desbloqueio"
+        submit: "Reenvie as instruções de desbloqueio"
+      resend_confirmation_instructions:
+        title: "Reenviar instruções de confirmação"
+        submit: "Reenviar instruções de confirmação"
+      links:
+        sign_up: "Inscrever"
+        sign_in: "Entrar"
+        forgot_your_password: "Esqueceu sua senha?"
+        sign_in_with_omniauth_provider: "Entre com %{provider}"
+        resend_unlock_instructions: "Reenvie as instruções de desbloqueio"
+        resend_confirmation_instructions: "Reenviar instruções de confirmação"
+    unsupported_browser:
+      headline: "Por favor, note que o ActiveAdmin não suporta mais o Internet Explorer versões 8 ou menos."
+      recommendation: "Nós recomendamos que  <a href=\"http://browsehappy.com/\">atualise seu navegador</a> para melhorar sua experiência."
+      turn_off_compatibility_view: "Se você estiver usando o IE 9 ou posterior, verifique se <a href=\"https://support.microsoft.com/en-us/help/17471\">desmarque a \"Compatibility View\"</a>."
+    access_denied:
+      message: "Você não está autorizado a executar esta ação."
+    index_list:
+      table: "Tabela"
+      block: "Lista"
+      grid: "Grid"
+      blog: "Blog"
+

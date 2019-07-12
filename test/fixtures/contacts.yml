@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-07-04
+  description: MyText
+  company: one
+  analist: one
+
+two:
+  date: 2019-07-04
+  description: MyText
+  company: two
+  analist: two

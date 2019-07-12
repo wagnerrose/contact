@@ -1,0 +1,2 @@
+class Regional < ApplicationRecord
+end

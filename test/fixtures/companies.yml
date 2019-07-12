@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  fantasy: 
+  code_cnpj: 
+  sap: 1
+
+two:
+  name: 
+  fantasy: 
+  code_cnpj: 
+  sap: 1
