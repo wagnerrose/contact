@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_10_183005) do
+ActiveRecord::Schema.define(version: 2019_07_16_184342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,14 @@ ActiveRecord::Schema.define(version: 2019_07_10_183005) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
-    t.string "city"
     t.string "zipcode"
     t.bigint "state_id"
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "county_id"
     t.index ["company_id"], name: "index_addresses_on_company_id"
+    t.index ["county_id"], name: "index_addresses_on_county_id"
     t.index ["state_id"], name: "index_addresses_on_state_id"
   end
 
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_183005) do
     t.bigint "regional_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "occupation"
     t.index ["regional_id"], name: "index_analists_on_regional_id"
   end
 
@@ -59,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_07_10_183005) do
     t.integer "sap"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "regional_id"
+    t.index ["regional_id"], name: "index_companies_on_regional_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -79,7 +83,19 @@ ActiveRecord::Schema.define(version: 2019_07_10_183005) do
     t.bigint "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ibge_meso"
+    t.string "ibge_micro"
+    t.integer "ibge_county_code"
     t.index ["state_id"], name: "index_counties_on_state_id"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "phone_number"
+    t.string "name_contact"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_phones_on_company_id"
   end
 
   create_table "regionals", force: :cascade do |t|
@@ -97,9 +113,12 @@ ActiveRecord::Schema.define(version: 2019_07_10_183005) do
   end
 
   add_foreign_key "addresses", "companies"
+  add_foreign_key "addresses", "counties"
   add_foreign_key "addresses", "states"
   add_foreign_key "analists", "regionals"
+  add_foreign_key "companies", "regionals"
   add_foreign_key "contacts", "analists"
   add_foreign_key "contacts", "companies"
   add_foreign_key "counties", "states"
+  add_foreign_key "phones", "companies"
 end

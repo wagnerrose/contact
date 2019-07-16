@@ -22,6 +22,9 @@ pt-BR:
       county:
         one: "Localidade"
         other: "Localidades"
+      phone:
+        one: "Telefone"
+        other: "Telefones"
       regional:
         one: "Regional"
         other: "Regionais"
@@ -47,6 +50,7 @@ pt-BR:
         name: "Nome"
         email: "E-mail"
         phone: "Telefone"
+        occupation: "Cargo"
         job: "Atividade"
         regional_id: "Regional"
         created_at: "Criado em"
@@ -70,8 +74,15 @@ pt-BR:
         latitude: "Latitude"
         longitude: "Longitude"
         state: "Estado"
+        ibge_meso: "Mesorregião"
+        ibge_micro: "Microrregião"
+        ibge_county_code: "Cod Localidade"
         created_at: "Criado em"
-        updated_at: "Atualizado em"      
+        updated_at: "Atualizado em"
+      phone:
+        name_contact: "Contato"
+        phone_number: "Telefone"
+        company: "Empresa"      
       regional:
         code: "Código"
         name: "Área"

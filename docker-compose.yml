@@ -17,6 +17,17 @@ services:
     ports:
       - "5432"
 
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "wagner.rose@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "bela1010"
+    ports:
+      - "15432:80"
+    depends_on:
+      - db
+
   app:
     image: contacts_container
     container_name: "app_contacts"

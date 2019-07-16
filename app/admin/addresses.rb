@@ -2,14 +2,14 @@ ActiveAdmin.register Address do
     index do
         column :company
         column :street
-        column :city
+        column :county
         column :state
         column :zipcode
         actions
     end
-    filter :city
-    filter :state
     filter :company
+    filter :county
+    filter :state
     
-    permit_params :street, :city, :zipcode, :state_id, :company_id
+    permit_params :street, :county_id, :zipcode, :state_id, :company_id
 end
