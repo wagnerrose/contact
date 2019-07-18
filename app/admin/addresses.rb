@@ -1,4 +1,7 @@
 ActiveAdmin.register Address do
+    menu parent: 'company'
+    config.batch_actions = false
+    
     index do
         column :company
         column :street

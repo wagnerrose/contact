@@ -1,4 +1,6 @@
 class Analist < ApplicationRecord
+    extend Enumerize
+
   belongs_to :regional
   has_many :contacts
 
@@ -7,4 +9,8 @@ class Analist < ApplicationRecord
   validates_presence_of :occupation, message: "O cargo não pode ser em branco."  
   validates_presence_of :job, message: "A atividade não pode ser em branco."
   validates_presence_of :regional_id, message: "A regional não pode ser em branco."
+
+  enumerize :job, in: [:Comercial, :Engenharia]
+  enumerize :occupation, in: [:Ger_Contas, :Eng_Comericial]
+
 end

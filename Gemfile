@@ -42,11 +42,22 @@ gem 'public_suffix', '~> 3.1.1'
 # gem ActiveAdmin - The administration framework for RoR
 gem 'activeadmin'
 
+# ActiveAdmin Addons will extend your ActiveAdmin and enable a set of 
+#  addons you can optionally use to improve the ActiveAdmin UI and make it awesome
+#gem 'activeadmin_addons'
+
+# An ActiveAdmin skin based on Google's Material Design.
+#gem 'active_material'
+
+# Enumerated attributes with I18n and ActiveRecord/Mongoid support 
+gem 'enumerize'
+
 # internacionalização i18n 
 gem 'rails-i18n'
 
 # gem Modern and responsive theme for Active Admin used by Formaweb.
 gem 'formadmin'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

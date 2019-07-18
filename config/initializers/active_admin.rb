@@ -157,7 +157,6 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   # config.before_action :do_something_awesome
-
   # == Attribute Filters
   #
   # You can exclude possibly sensitive model attributes from being displayed,
@@ -250,6 +249,14 @@ ActiveAdmin.setup do |config|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
+
+  config.namespace :admin do |admin|
+    admin.build_menu :default do |menu|
+      menu.add id: 'contact', label: 'Contato', priority: 0
+      menu.add id: 'company', label: 'Empresa' , priority: 1
+      menu.add id: 'register', label: 'Cadastro', priority: 2
+    end
+  end
 
   # == Download Links
   #

@@ -41,9 +41,9 @@ pt-BR:
         updated_at: "Updated"
       address:
         street: "Endereço"
-        city: "Cidade"
+        county: "Cidade"
         zipcode: "CEP"
-        state_id: "UF"
+        state: "UF"
         created_at: "Criado em"
         updated_at: "Atualizado em"        
       analist:
@@ -86,6 +86,7 @@ pt-BR:
       regional:
         code: "Código"
         name: "Área"
+        initials: "Sigla"
         created_at: "Criado em"
         updated_at: "Atualizado em"
       state:
@@ -93,6 +94,14 @@ pt-BR:
         name: "Estado"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+  enumerize:
+    analist:
+      job: 
+        commercial: "Comercial"
+        engineering: "Engenharia"
+      occupation:
+        account_manager: "Gerente de Contas"
+        commercial_enginneering: "Eng. Comercial"
   active_admin:
     dashboard: "Dashboard"
     dashboard_welcome:
@@ -101,7 +110,7 @@ pt-BR:
     view: "Ver"
     edit: "Editar"
     delete: "Apagar"
-    delete_confirmation: "Você tem certeza que deseja apagar??"
+    delete_confirmation: "Você tem certeza que deseja apagar?"
     create_another: "Cria outro %{model}"
     new_model: "Novo %{model}"
     edit_model: "Edita %{model}"
@@ -111,7 +120,7 @@ pt-BR:
     empty: "Vazio"
     previous: "Anterior"
     next: "Próximo"
-    download: "Descarrega:"
+    download: "Download:"
     has_many_new: "Adiciona Novo %{model}"
     has_many_delete: "Apaga"
     has_many_remove: "Remove"
@@ -151,7 +160,7 @@ pt-BR:
       empty: "Nenhum %{model} encontrado"
       one: "Mostrando <b>1</b> %{model}"
       one_page: "Mostrando <b>todos %{n}</b> %{model}"
-      multiple: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{total}</b> in total"
+      multiple: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{total}</b> no total"
       multiple_without_total: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b>"
       per_page: "Por página: "
       entry:
@@ -237,4 +246,11 @@ pt-BR:
       block: "Lista"
       grid: "Grid"
       blog: "Blog"
-
+    resource:
+      analist:
+        job:
+          commercial: "Comercial"
+          engineering: "Engenharia"          
+        occupation:
+          account_manager: "Gerente de Contas"
+          commercial_enginneering: "Eng. Comercial"

@@ -1,6 +1,8 @@
 ActiveAdmin.register County do
-
+    menu parent: 'register'
+    config.batch_actions = false
     config.sort_order = "name_asc"
+    
     index do
         column :name
         column :latitude
