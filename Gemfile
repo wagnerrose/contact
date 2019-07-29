@@ -58,6 +58,9 @@ gem 'rails-i18n'
 # gem Modern and responsive theme for Active Admin used by Formaweb.
 gem 'formadmin'
 
+# This gem is a port of Perl's Data::Faker library that generates fake data.
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
