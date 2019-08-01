@@ -1,4 +1,34 @@
 pt-BR:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
+  time:
+    am: ''
+    formats:
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+    pm: ''
+  formtastic:
+    hints:
+      analist:
+        name: "Nome Analista"
+        email: "E-mail do analista"
+      company:
+        name: "Razão Social"
+        fantasy: "Nome fantasia"
+        sap: "Código de Cadastro SAP"
+        code_cnpj: "Código de Cadastro CNPJ"
+        regional: "Regional de Atendimento"
+    placeholders:
+      analist:
+        name: "Informe o nome do analista"
+        email: "Informe o e-mail do analista"
+      company:
+        name: "Informe a Razão Social"
+        fantasy: "Informe o nome fantasia"
   activerecord:
     models:
       comment:
@@ -55,6 +85,12 @@ pt-BR:
         regional_id: "Regional"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+      analist/job:
+        commercial: "Comercial"
+        engineering: "Engenharia"  
+      analist/occupation:
+        Ger_Contas: "Gerente de Contas"
+        Eng_Comercial: "Eng. Comercial"
       company:
         name: "Nome"
         fantasy: "Nome Fantasia"
@@ -94,14 +130,12 @@ pt-BR:
         name: "Estado"
         created_at: "Criado em"
         updated_at: "Atualizado em"
-  enumerize:
-    analist:
-      job: 
-        commercial: "Comercial"
-        engineering: "Engenharia"
-      occupation:
-        account_manager: "Gerente de Contas"
-        commercial_enginneering: "Eng. Comercial"
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes
   active_admin:
     dashboard: "Dashboard"
     dashboard_welcome:
@@ -246,11 +280,3 @@ pt-BR:
       block: "Lista"
       grid: "Grid"
       blog: "Blog"
-    resource:
-      analist:
-        job:
-          commercial: "Comercial"
-          engineering: "Engenharia"          
-        occupation:
-          account_manager: "Gerente de Contas"
-          commercial_enginneering: "Eng. Comercial"

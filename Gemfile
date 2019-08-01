@@ -44,7 +44,10 @@ gem 'activeadmin'
 
 # ActiveAdmin Addons will extend your ActiveAdmin and enable a set of 
 #  addons you can optionally use to improve the ActiveAdmin UI and make it awesome
-#gem 'activeadmin_addons'
+gem 'activeadmin_addons'
+
+# Provides ability to manipulate sidebar position for ActiveAdmim
+gem 'active_admin_sidebar'
 
 # An ActiveAdmin skin based on Google's Material Design.
 #gem 'active_material'

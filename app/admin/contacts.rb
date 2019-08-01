@@ -1,6 +1,11 @@
 ActiveAdmin.register Contact do
     menu parent: 'contact'
     config.batch_actions = false
+
+    action_item :back, only: [:show, :edit] do
+        link_to "Voltar", :back
+    end
+
     
     index do
         column :company

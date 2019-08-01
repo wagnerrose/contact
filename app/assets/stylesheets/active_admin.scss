@@ -1,3 +1,4 @@
+@import 'activeadmin_addons/all';
 
 // SASS variable overrides must be declared before loading up Active Admin's styles.
 //
@@ -36,7 +37,7 @@ $warning-color: $yellow !default;
 
 
 //--- Theme ---//
-$primary-color: #1577e6 !default;
+$primary-color: #1963da !default;
 $secondary-color: $silver !default;
 
 //--- Page ---//
@@ -47,9 +48,18 @@ $text-color:       $gray !default;
 $highlight-background: rgba($primary-color, 0.5) !default;
 $highlight-color: $white !default;
 
-$font-size: 11px !default;
+$font-size: 12px !default;
+
+body.active_admin {
+    #active_admin_content.left_sidebar, #active_admin_content.collapsed_sidebar {
+      .collapse_btn, .uncollapse_btn {
+          background-color: #767270;
+      }
+    }
+   }
 
 @import 'formadmin/formadmin';
+
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
