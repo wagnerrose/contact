@@ -7,26 +7,63 @@
 # Ignore bundler config.
 /.bundle
 
+*.rbc
+capybara-*.html
+.rspec
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/coverage/
+/spec/tmp
+*.orig
+rerun.txt
+pickle-email-*.html
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
+# dotenv
+# TODO Comment out this rule if environment variables can be committed
+.env
+
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
 
+# Ignore node_modules
 /node_modules
+
+# Ignore yarn files
 /yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 
 /public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+config/master.key
+config/initializers/secret_token.rb
 
 # Ignore postressql database
 /postgres/*
 
+# Ignore test
+/test/*
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
+/public/assets
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# if using bower-rails ignore default bower_components path bower.json files
+/vendor/assets/bower_components
+*.bowerrc
+bower.json
 

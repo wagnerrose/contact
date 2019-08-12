@@ -4,7 +4,13 @@ includes :regional
     config.sort_order = "name_asc"
     config.batch_actions = false
     menu parent: 'register'
-    
+
+    permit_params :name, :email, :phone, :occupation, :job, :regional_id
+
+    filter :name
+    filter :occupation, as: :select, collection: Analist.occupation.values
+    filter :job, as: :select, collection: Analist.job.values
+    filter :regional
  
     action_item :back, only: [:show, :edit] do
         link_to "Voltar", :back
@@ -12,7 +18,7 @@ includes :regional
 
     index do
         column :name do |nome|
-            link_to nome.name, admin_analist_path(nome.id), title: "Editar/Apagar"
+            strong {link_to nome.name, admin_analist_path(nome.id), title: "Editar/Apagar"}
         end
         column :email
         column :phone
@@ -23,6 +29,7 @@ includes :regional
         end
     end
     form  do |f|
+        f.semantic_errors *f.object.errors.keys
         f.inputs 'Analista' do
             f.input :name, require: true
             f.input :email
@@ -44,10 +51,4 @@ includes :regional
             end
         end
     end
-    filter :name
-    filter :occupation, as: :select, collection: Analist.occupation.values
-    filter :job, as: :select, collection: Analist.job.values
-    filter :regional
-    
-    permit_params :name, :email, :phone, :occupation, :job, :regional_id
 end

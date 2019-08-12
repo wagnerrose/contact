@@ -1,0 +1,11 @@
+<%= form (html: { multipart: true}) do |f| %>
+    <div> </div>
+    <%= f.semantic_errors *f.object.errors.keys %>
+    <%= f.inputs 'Face Time' do %>
+        <%= f.input :company, require: true, input_html: {size: 10} %>
+        <%= f.input :analist, require: true %>
+        <%= f.input :date, require:true,  as: :date_picker %>
+        <%= f.input :description %>
+    <%= end %>
+    <%= f.actions %>
+<%= end %>

@@ -1,0 +1,18 @@
+<%= columns do %>
+    <%= column do %>
+        <div> <h1> teste</h1></div>
+    <%= end %>
+    <%= column max_width: "800px", min_width: "500px" do %>
+        <%= panel "" do %>
+            <%= attributes_table_for contact do %>
+                <%= row :company %>
+                <%= row :analist %>
+                <%= row :date, as: :datepicker, datepicker_options: {date_Format: 'dd/mm/yy'}%>
+                <%= row :description%>
+            <%= end %>
+        <%= end %>
+    <%= end %>
+    <%= column do %>
+        <div> teste </div>
+    <%= end %>
+<%= end %>

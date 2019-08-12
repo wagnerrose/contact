@@ -253,8 +253,8 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu :default do |menu|
-      menu.add id: 'contact', label: 'Contato', priority: 0
-      menu.add id: 'company', label: 'Empresa' , priority: 1
+      menu.add id: 'contact', label: 'Face Time', priority: 0
+      menu.add id: 'company', label: 'Empresas' , priority: 1
       menu.add id: 'register', label: 'Cadastro', priority: 2
     end
   end
@@ -285,7 +285,7 @@ ActiveAdmin.setup do |config|
   # Pagination is enabled by default for all resources.
   # You can control the default per page count for all resources here.
   #
-  # config.default_per_page = 30
+  config.default_per_page = 25
   #
   # You can control the max per page count too.
   #

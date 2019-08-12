@@ -1,43 +1,40 @@
 ActiveAdmin.register Company do
-
     includes :regional, :phones, :contacts, :addresses
 
     menu parent: 'company'
     config.batch_actions = false
     config.sort_order = "name_asc"
-
-    action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
-    end
-
     permit_params   :name, 
                     :fantasy, 
                     :code_cnpj, 
                     :sap, 
                     :regional_id,
-                    phones_attributes: [:id, :phone_number, :name_contact, :email, :_destroy],
                     addresses_attributes: [:id, :street, :county_id, :zipcode, :state_id, :company_id, :_destroy],
-                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, :_destroy]
+                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, :_destroy],
+                    phones_attributes: [:id, :phone_number, :name_contact, :email, :_destroy]
     
     filter :regional
     filter :name
     filter :fantasy
-    filter :code_cnpj
-    filter :sap
- 
+
+    action_item :back, only: [:show, :edit] do
+        link_to "Voltar", :back
+    end
+
     index do
         column 'Nome' do |nome|
-            link_to nome.name, admin_company_path(nome.id), title: "Editar/Apagar"
+            strong {link_to nome.name, admin_company_path(nome.id), title: "Editar/Apagar"}
         end
         column :fantasy
         column :code_cnpj
         column :sap
         column :regional do |reg|
-            link_to reg.regional.initials, admin_regional_path(reg.regional), title: "Editar/Apagar"
+            reg.regional.initials
         end
     end
 
     form  do |f|
+        f.semantic_errors *f.object.errors.keys        
         tabs do
             tab "Empresa" do
                 f.inputs "Detalhes" do
@@ -67,19 +64,8 @@ ActiveAdmin.register Company do
                                 allow_destroy: true,
                                 new_record: true do |a|
                         a.input :name_contact
-                        a.input :phone_number
-                        a.input :email
-                    end
-                end
-            end
-            tab "Contatos" do 
-                f.inputs "detalhes" do
-                    f.has_many :contacts,
-                                allow_destroy: true,
-                                new_record: true do |a|
-                        a.input :analist
-                        a.input :date
-                        a.input :description
+                        a.input :phone_number, as: :phone 
+                        a.input :email, as: :email
                     end
                 end
             end
@@ -112,10 +98,13 @@ ActiveAdmin.register Company do
                 column :email
             end
         end
-        panel 'Contatos' do
+        panel 'Face Time' do
             table_for company.contacts do
+                column "Face Time" do |facetime|
+                    link_to facetime.id, admin_contact_path(facetime.id), title: "Edita/Apaga Face Time"
+                end
                 column :analist
-                column :date
+                column :date, as: :datepicker
                 column :description
             end
         end       
