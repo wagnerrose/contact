@@ -24,8 +24,8 @@ includes :regional
         column :phone
         column :occupation
         column :job 
-        column :regional do |reg|
-            link_to reg.regional.initials, admin_regional_path(reg.regional)
+        column :regional do |regional|
+            regional.regional.initials
         end
     end
     form  do |f|
@@ -47,7 +47,9 @@ includes :regional
                 row :phone
                 row :occupation
                 row :job
-                row :regional
+                row "Regional" do |regional|
+                    regional.regional.initials
+                end
             end
         end
     end

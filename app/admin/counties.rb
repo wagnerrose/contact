@@ -47,7 +47,9 @@ ActiveAdmin.register County do
                 row :name
                 row :latitude
                 row :longitude
-                row :state
+                row "Estado" do |estado|
+                    estado.state.code
+                end
                 row :ibge_meso
                 row :ibge_micro
                 row :ibge_county_code

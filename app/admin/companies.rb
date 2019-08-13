@@ -79,19 +79,25 @@ ActiveAdmin.register Company do
                 row :fantasy
                 row :code_cnpj
                 row :sap
-                row :regional
+                row "Regional" do |regional|
+                    regional.regional.name
+                end
             end
         end
-        panel 'Endeereço(s)' do
+        panel 'Endereço(s)' do
             table_for company.addresses do
                 column :street
-                column :county
+                column "Cidade" do |cidade|
+                    cidade.county.name
+                end
                 column :zipcode
-                column :state
+                column "Estado" do |estado|
+                    estado.state.name
+                end
             end
         end
 
-        panel 'Telefones' do
+        panel 'Telefone(s)' do
             table_for company.phones do
                 column :name_contact
                 column :phone_number
@@ -101,9 +107,11 @@ ActiveAdmin.register Company do
         panel 'Face Time' do
             table_for company.contacts do
                 column "Face Time" do |facetime|
-                    link_to facetime.id, admin_contact_path(facetime.id), title: "Edita/Apaga Face Time"
+                    strong {link_to facetime.id, admin_contact_path(facetime.id), title: "Edita/Apaga Face Time"}
                 end
-                column :analist
+                column "Analista" do |analista|
+                    analista.analist.name
+                end
                 column :date, as: :datepicker
                 column :description
             end

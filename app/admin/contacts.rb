@@ -4,20 +4,28 @@ ActiveAdmin.register Contact do
 
 
     permit_params :id,:date, :description, :company_id, :analist_id, :_destroy
-
+    
+    filter :date
+    filter :company
+    filter :analist
+    
+    action_item :back, only: [:show, :edit] do
+        link_to "Voltar", :back
+    end
+    
     index title: "Face Time" do
         column "Face Time" do |facetime|
             strong {link_to facetime.id, admin_contact_path(facetime.id), title: "Editar/Apagar"}
         end
-        column :company
-        column :analist
+        column "Empresa" do |empresa|
+            empresa.company.name
+        end
+        column "Analista" do |analista|
+            analista.analist.name
+        end
         column :date, as: :datepicker, datepicker_options: {date_Format: 'dd/mm/yy'}
         column :description
     end
-    filter :date
-    filter :company
-    filter :analist
-
     form  title: "Face Time" do |f|
         f.semantic_errors *f.object.errors.keys
         f.inputs 'Face Time' do
@@ -34,7 +42,9 @@ ActiveAdmin.register Contact do
                 panel "" do 
                     attributes_table_for contact do 
                         row :company 
-                        row :analist 
+                        row "Analista" do |analista| 
+                            analista.analist.name
+                        end 
                         row :date, as: :datepicker, datepicker_options: {date_Format: 'dd/mm/yy'}
                         row :description
                     end 
