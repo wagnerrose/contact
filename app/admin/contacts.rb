@@ -2,13 +2,16 @@ ActiveAdmin.register Contact do
     menu parent: 'contact'
     config.batch_actions = false
 
-
     permit_params :id,:date, :description, :company_id, :analist_id, :_destroy
     
     filter :date
     filter :company
     filter :analist
-    
+
+    scope :all
+    scope :nok
+    scope :ok
+
     action_item :back, only: [:show, :edit] do
         link_to "Voltar", :back
     end

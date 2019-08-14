@@ -52,8 +52,8 @@ ActiveAdmin.register Company do
                                 allow_destroy: true do |a|
                         a.input :street
                         a.input :county
-                        a.input :zipcode
                         a.input :state
+                        a.input :zipcode
                         a.actions
                     end
                 end
