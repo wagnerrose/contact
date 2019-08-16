@@ -8,9 +8,9 @@ ActiveAdmin.register Contact do
     filter :company
     filter :analist
 
-    scope :all
-    scope :nok
-    scope :ok
+    scope "Todos", :all
+    scope "Contactar", :nok
+    scope "Ok", :ok
 
     action_item :back, only: [:show, :edit] do
         link_to "Voltar", :back
