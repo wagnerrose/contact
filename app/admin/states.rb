@@ -23,7 +23,7 @@ ActiveAdmin.register State do
         f.semantic_errors *f.object.errors.keys 
         f.inputs 'Estado' do
             f.input :code, require: true
-            f.input :name, require: true
+            f.input :name, require: true, input_html: {class: 'maiusculo'}
         end
         f.actions
     end

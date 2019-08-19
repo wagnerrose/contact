@@ -31,9 +31,9 @@ includes :regional
     form  do |f|
         f.semantic_errors *f.object.errors.keys
         f.inputs 'Analista' do
-            f.input :name, require: true
-            f.input :email
-            f.input :phone
+            f.input :name, require: true, input_html: {class: 'maiusculo'}
+            f.input :email, input_html: {class: 'minusculo'}
+            f.input :phone, as: :phone
             f.input :occupation
             f.input :job
             f.input :regional, require: true

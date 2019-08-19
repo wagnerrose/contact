@@ -38,9 +38,9 @@ ActiveAdmin.register Company do
         tabs do
             tab "Empresa" do
                 f.inputs "Detalhes" do
-                    f.input :name, require: true
-                    f.input :fantasy
-                    f.input :code_cnpj, input_html: {size: 10}
+                    f.input :name, require: true, input_html: {class: 'maiusculo'}
+                    f.input :fantasy, input_html: {class: 'maiusculo'}
+                    f.input :code_cnpj
                     f.input :sap, label: "Código SAP", input_html: {size: 10}
                     f.input :regional
                 end
@@ -50,9 +50,9 @@ ActiveAdmin.register Company do
                     f.has_many :addresses,
                                 new_record: true,
                                 allow_destroy: true do |a|
-                        a.input :street
-                        a.input :county
-                        a.input :state
+                        a.input :street, input_html: {class: 'maiusculo'}
+                        a.input :county, require: true
+                        a.input :state, require: true
                         a.input :zipcode
                         a.actions
                     end
@@ -63,9 +63,9 @@ ActiveAdmin.register Company do
                     f.has_many :phones,
                                 allow_destroy: true,
                                 new_record: true do |a|
-                        a.input :name_contact
-                        a.input :phone_number, as: :phone 
-                        a.input :email, as: :email
+                        a.input :name_contact, require: true, input_html: {class: 'maiusculo'}
+                        a.input :phone_number, as: :phone , require: true
+                        a.input :email, as: :email, input_html: {class: 'minusculo'}
                     end
                 end
             end

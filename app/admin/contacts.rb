@@ -32,10 +32,10 @@ ActiveAdmin.register Contact do
     form  title: "Face Time" do |f|
         f.semantic_errors *f.object.errors.keys
         f.inputs 'Face Time' do
-            f.input :company, require: true, input_html: {size: 10}
+            f.input :company, require: true, iinput_html: {class: 'maiusculo'}
             f.input :analist, require: true
             f.input :date, require:true,  as: :date_picker
-            f.input :description 
+            f.input :description, as: :text
         end 
         f.actions 
     end

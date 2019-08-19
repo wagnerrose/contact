@@ -64,6 +64,13 @@ gem 'formadmin'
 # This gem is a port of Perl's Data::Faker library that generates fake data.
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
+#  Add some nice ActiveModel/ActiveRecord validators. (e-mail, ip address, datetime, cpf, cnpj )
+#  https://github.com/fnando/validators
+gem "validators"
+
+# This gem does some CPF/CNPJ magic. It allows you to create, 
+#  validate and format CPF/CNPJ, even through the command-line
+#gem "cpf_cnpj"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

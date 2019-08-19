@@ -21,8 +21,8 @@ ActiveAdmin.register Regional do
         f.semantic_errors *f.object.errors.keys 
         f.inputs 'Regional' do
             f.input :code, require: true
-            f.input :name, require: true
-            f.input :initials, require: true
+            f.input :name, require: true, input_html: {class: 'maiusculo'}
+            f.input :initials, require: true, input_html: {class: 'maiusculo'}
         end
         f.actions
     end

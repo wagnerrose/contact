@@ -50,6 +50,13 @@ $highlight-color: $white !default;
 
 $font-size: 12px !default;
 
+.maiusculo {
+  text-transform: uppercase;
+}
+.minusculo {
+  text-transform: lowercase;
+}
+
 body.active_admin {
     #active_admin_content.left_sidebar, #active_admin_content.collapsed_sidebar {
       .collapse_btn, .uncollapse_btn {

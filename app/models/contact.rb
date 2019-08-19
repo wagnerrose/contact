@@ -5,5 +5,4 @@ class Contact < ApplicationRecord
   scope :nok, -> {where(date: nil)}
   scope :ok, -> {where.not(date: nil)}
 
-
 end
