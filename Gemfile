@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -64,13 +65,9 @@ gem 'formadmin'
 # This gem is a port of Perl's Data::Faker library that generates fake data.
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
-#  Add some nice ActiveModel/ActiveRecord validators. (e-mail, ip address, datetime, cpf, cnpj )
-#  https://github.com/fnando/validators
-gem "validators"
-
 # This gem does some CPF/CNPJ magic. It allows you to create, 
 #  validate and format CPF/CNPJ, even through the command-line
-#gem "cpf_cnpj"
+gem 'validates_cpf_cnpj'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

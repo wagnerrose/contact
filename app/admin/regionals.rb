@@ -6,7 +6,7 @@ ActiveAdmin.register Regional do
     permit_params :code, :name, :initials
 
     action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
+        link_to "Voltar", admin_regionals_path
     end
 
 

@@ -9,7 +9,7 @@ ActiveAdmin.register State do
     filter :name
 
     action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
+        link_to "Voltar", admin_states_path
     end
 
     

@@ -12,7 +12,7 @@ ActiveAdmin.register County do
     filter :ibge_micro
     
     action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
+        link_to "Voltar", admin_counties_path
     end
     
     index do
@@ -31,13 +31,13 @@ ActiveAdmin.register County do
     form do |f|
         f.semantic_errors *f.object.errors.keys 
         f.inputs 'Localidade' do
-            f.input :name, require: true
+            f.input :name, require: true, iinput_html: {class: 'maiusculo'}
             f.input :latitude
             f.input :longitude
             f.input :state
-            f.input :ibge_meso
-            f.input :ibge_micro
-            f.input :ibge_county_code            
+            f.input :ibge_meso, input_html: {class: 'maiusculo'}
+            f.input :ibge_micro, input_html: {class: 'maiusculo'}
+            f.input :ibge_county_code
         end
         f.actions
     end

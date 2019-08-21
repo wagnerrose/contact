@@ -13,7 +13,7 @@ ActiveAdmin.register Contact do
     scope "Ok", :ok
 
     action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
+        link_to "Voltar", admin_contacts_path
     end
     
     index title: "Face Time" do

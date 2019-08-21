@@ -18,7 +18,7 @@ ActiveAdmin.register Company do
     filter :fantasy
 
     action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
+        link_to "Voltar", admin_companies_path
     end
 
     index do
@@ -26,7 +26,7 @@ ActiveAdmin.register Company do
             strong {link_to nome.name, admin_company_path(nome.id), title: "Editar/Apagar"}
         end
         column :fantasy
-        column :code_cnpj
+        column :code_cnpj, input_html: {class: 'cnpj'} 
         column :sap
         column :regional do |reg|
             reg.regional.initials
@@ -40,7 +40,7 @@ ActiveAdmin.register Company do
                 f.inputs "Detalhes" do
                     f.input :name, require: true, input_html: {class: 'maiusculo'}
                     f.input :fantasy, input_html: {class: 'maiusculo'}
-                    f.input :code_cnpj
+                    f.input :code_cnpj, input_html: {class: 'cnpj'} 
                     f.input :sap, label: "Código SAP", input_html: {size: 10}
                     f.input :regional
                 end
@@ -53,7 +53,7 @@ ActiveAdmin.register Company do
                         a.input :street, input_html: {class: 'maiusculo'}
                         a.input :county, require: true
                         a.input :state, require: true
-                        a.input :zipcode
+                        a.input :zipcode, input_html: {class: 'cep'}
                         a.actions
                     end
                 end
@@ -64,7 +64,7 @@ ActiveAdmin.register Company do
                                 allow_destroy: true,
                                 new_record: true do |a|
                         a.input :name_contact, require: true, input_html: {class: 'maiusculo'}
-                        a.input :phone_number, as: :phone , require: true
+                        a.input :phone_number, require: true, input_html: {class: 'sp_celphones'} 
                         a.input :email, as: :email, input_html: {class: 'minusculo'}
                     end
                 end
@@ -77,7 +77,7 @@ ActiveAdmin.register Company do
             attributes_table_for company do
                 row :name
                 row :fantasy
-                row :code_cnpj
+                row :code_cnpj, input_html: {class: 'cnpj'} 
                 row :sap
                 row "Regional" do |regional|
                     regional.regional.name
@@ -90,7 +90,7 @@ ActiveAdmin.register Company do
                 column "Cidade" do |cidade|
                     cidade.county.name
                 end
-                column :zipcode
+                column :zipcode, input_html: {class: 'cep'}
                 column "Estado" do |estado|
                     estado.state.name
                 end
@@ -100,7 +100,7 @@ ActiveAdmin.register Company do
         panel 'Telefone(s)' do
             table_for company.phones do
                 column :name_contact
-                column :phone_number
+                column :phone_number, input_html: {class: 'sp_celphones'} 
                 column :email
             end
         end

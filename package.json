@@ -1,5 +1,9 @@
 {
   "name": "myapp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "jquery-mask-plugin": "^1.14.16",
+    "jquery-ujs": "^1.2.2"
+  }
 }

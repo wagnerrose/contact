@@ -10,6 +10,7 @@ class Company < ApplicationRecord
 
     validates :name, presence: { message: "O nome da empresa deve ser informada."}
     validates :regional_id, presence: { message: "O nome da regional deve ser preenchido."}
+    validates :code_cnpj, cpf_or_cnpj: {message: "CPF/CNPJ com valor incorreto.", allow_blank: true}
 
     before_save {
         self.name.upcase!

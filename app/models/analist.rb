@@ -7,9 +7,8 @@ class Analist < ApplicationRecord
   has_many :contacts
 
   validates :name, presence: { message: "O nome do analista deve ser informado."}
-
-  validates :email, 
-        email: {message: "Favor verificar o email, pois seu formato esta incorreto."},
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, 
+        on: :create, message: "O e-mail não é válido" },
         presence: { message: "O E-mail não pode ser em branco."}
   validates :occupation, presence: { message: "O cargo não pode ser em branco." } 
   validates :job, presence: { message: "A atividade deve ser informada."}

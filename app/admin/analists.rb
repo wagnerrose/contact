@@ -13,7 +13,7 @@ includes :regional
     filter :regional
  
     action_item :back, only: [:show, :edit] do
-        link_to "Voltar", :back
+        link_to "Voltar", admin_analists_path
     end
 
     index do
@@ -21,7 +21,7 @@ includes :regional
             strong {link_to nome.name, admin_analist_path(nome.id), title: "Editar/Apagar"}
         end
         column :email
-        column :phone
+        column :phone, input_html: {class: 'sp_celphones'}
         column :occupation
         column :job 
         column :regional do |regional|
@@ -33,7 +33,7 @@ includes :regional
         f.inputs 'Analista' do
             f.input :name, require: true, input_html: {class: 'maiusculo'}
             f.input :email, input_html: {class: 'minusculo'}
-            f.input :phone, as: :phone
+            f.input :phone, input_html: {class: 'sp_celphones'}
             f.input :occupation
             f.input :job
             f.input :regional, require: true
@@ -44,7 +44,8 @@ includes :regional
         panel 'Analista' do
             attributes_table_for analist do
                 row :name
-                row :phone
+                row :email
+                row :phone, input_html: {class: 'sp_celphones'}
                 row :occupation
                 row :job
                 row "Regional" do |regional|
