@@ -32,13 +32,7 @@ $(document).ready(function(){
     // configuracao sugerida pra jquery-mask-plugin
     $.jMaskGlobals.watchDataMask = true;
 
-    var options =  {
-        onKeyPress: function(cep, e, field, options) {
-          var masks = ['00000-000', '0-00-00-00'];
-          var mask = (cep.length>7) ? masks[1] : masks[0];
-          $('.cep').mask(mask, options);
-      }};
-    $('.cep').mask('00000-000', options);
+    $('.cep').mask('00000-000');
     $('.date').mask('00/00/0000');
     $('.time').mask('00:00:00');
     $('.date_time').mask('00/00/0000 00:00:00');

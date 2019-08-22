@@ -31,7 +31,7 @@ ActiveAdmin.register State do
         panel 'Estado' do
             attributes_table_for state do
                 row :code
-                row :name
+                row :name, input_html: {class: 'maiusculo'}
             end
         end
     end

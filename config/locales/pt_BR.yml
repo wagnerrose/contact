@@ -85,10 +85,10 @@ pt-BR:
         regional_id: "Regional"
         created_at: "Criado em"
         updated_at: "Atualizado em"
-      analist/job:
+      analist/jobs:
         commercial: "Comercial"
         engineering: "Engenharia"  
-      analist/occupation:
+      analist/occupations:
         Ger_Contas: "Gerente de Contas"
         Eng_Comercial: "Eng. Comercial"
       company:
@@ -103,6 +103,13 @@ pt-BR:
         description: "Descrição"
         company: "Empresa"
         analist: "Analista"
+        contact_types:
+          email: "E-Mail"
+          phone: "Telefone"
+          letter: "Carta"
+          visit: "Visita"
+          app_message: "App Mensagem"
+          sms: "SMS"           
         created_at: "Criado em"
         updated_at: "Atualizado em"
       county:
@@ -280,3 +287,12 @@ pt-BR:
       block: "Lista"
       grid: "Grid"
       blog: "Blog"
+  formtastic:
+    titles:
+      contact/contact_types:
+          email: "E-Mail"
+          phone: "Telefone"
+          letter: "Carta"
+          visit: "Visita"
+          app_message: "App Mensagem"
+          sms: "SMS"

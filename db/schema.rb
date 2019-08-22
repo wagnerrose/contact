@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_26_135932) do
+ActiveRecord::Schema.define(version: 2019_08_21_165908) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql" 
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_07_26_135932) do
     t.bigint "analist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "contact_type"
     t.index ["analist_id"], name: "index_contacts_on_analist_id"
     t.index ["company_id"], name: "index_contacts_on_company_id"
   end
