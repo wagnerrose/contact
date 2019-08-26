@@ -25,9 +25,6 @@ jQuery(function($){
             yearSuffix: ''};
     $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
 });
-
-
-
 $(document).ready(function(){
     // configuracao sugerida pra jquery-mask-plugin
     $.jMaskGlobals.watchDataMask = true;

@@ -11,24 +11,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
-  formtastic:
-    hints:
-      analist:
-        name: "Nome Analista"
-        email: "E-mail do analista"
-      company:
-        name: "Razão Social"
-        fantasy: "Nome fantasia"
-        sap: "Código de Cadastro SAP"
-        code_cnpj: "Código de Cadastro CNPJ"
-        regional: "Regional de Atendimento"
-    placeholders:
-      analist:
-        name: "Informe o nome do analista"
-        email: "Informe o e-mail do analista"
-      company:
-        name: "Informe a Razão Social"
-        fantasy: "Informe o nome fantasia"
   activerecord:
     models:
       comment:
@@ -80,17 +62,17 @@ pt-BR:
         name: "Nome"
         email: "E-mail"
         phone: "Telefone"
-        occupation: "Cargo"
-        job: "Atividade"
         regional_id: "Regional"
         created_at: "Criado em"
         updated_at: "Atualizado em"
-      analist/jobs:
-        commercial: "Comercial"
-        engineering: "Engenharia"  
-      analist/occupations:
-        Ger_Contas: "Gerente de Contas"
-        Eng_Comercial: "Eng. Comercial"
+        job: "Atividade"
+        jobs:
+          commercial: "Comercial"
+          engineering: "Engenharia"
+        occupation: "Cargo"
+        occupations:
+          account_manager: "Gerente de Contas"
+          commercial_engineer: "Eng. Comercial"
       company:
         name: "Nome"
         fantasy: "Nome Fantasia"
@@ -103,12 +85,13 @@ pt-BR:
         description: "Descrição"
         company: "Empresa"
         analist: "Analista"
+        contact_type: "Tipo Contato"
         contact_types:
           email: "E-Mail"
           phone: "Telefone"
           letter: "Carta"
           visit: "Visita"
-          app_message: "App Mensagem"
+          app_message: "App de Mensagem"
           sms: "SMS"           
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -288,11 +271,24 @@ pt-BR:
       grid: "Grid"
       blog: "Blog"
   formtastic:
-    titles:
-      contact/contact_types:
-          email: "E-Mail"
-          phone: "Telefone"
-          letter: "Carta"
-          visit: "Visita"
-          app_message: "App Mensagem"
-          sms: "SMS"
+    labels:
+      contact:
+        contact_type:
+          phone: "telefone"
+    hints:
+      analist:
+        name: "Nome Analista"
+        email: "E-mail do analista"
+      company:
+        name: "Razão Social"
+        fantasy: "Nome fantasia"
+        sap: "Código de Cadastro SAP"
+        code_cnpj: "Código de Cadastro CNPJ"
+        regional: "Regional de Atendimento"
+    placeholders:
+      analist:
+        name: "Informe o nome do analista"
+        email: "Informe o e-mail do analista"
+      company:
+        name: "Informe a Razão Social"
+        fantasy: "Informe o nome fantasia"

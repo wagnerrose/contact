@@ -29,17 +29,17 @@ ActiveAdmin.register Contact do
         end
         column :date, as: :datepicker, datepicker_options: {date_Format: 'dd/mm/yy'}
         column "Tipo" do |tipo|
-            Contact.human_enum_name(:contact_type, tipo.contact_type)
+            Contact.translate_human_enum_name(:contact_type, tipo.contact_type)
         end
         column :description
     end
     form  title: "Face Time" do |f|
         f.semantic_errors *f.object.errors.keys
         f.inputs 'Face Time' do
-            f.input :company, require: true, iinput_html: {class: 'maiusculo'}
+            f.input :company, require: true, input_html: {class: 'maiusculo'}
             f.input :analist, require: true
             f.input :date, require:true,  as: :date_picker
-            f.input :contact_type, as: :select, collection: Contact.contact_types.map {|tipo| [Contact.human_enum_name(:contact_type,tipo[0])]}
+            f.input :contact_type, as: :select, collection: Contact.contact_type_attributes_for_select, input_html: {class: 'select'}
             f.input :description, as: :text
         end 
         f.actions 
@@ -54,8 +54,8 @@ ActiveAdmin.register Contact do
                             analista.analist.name
                         end 
                         row :date, as: :datepicker, datepicker_options: {date_Format: 'dd/mm/yy'}
-                        row "Tipo" do |tipo|
-                            Contact.human_enum_name(:contact_type, tipo.contact_type)
+                        tag_row "Tipo contato" do |tipo|
+                            Contact.translate_human_enum_name(:contact_type, tipo.contact_type)
                         end
                         row :description
                     end 
@@ -64,3 +64,4 @@ ActiveAdmin.register Contact do
         end 
     end
 end
+ 

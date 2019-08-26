@@ -10,7 +10,7 @@ ActiveAdmin.register Company do
                     :sap, 
                     :regional_id,
                     addresses_attributes: [:id, :street, :county_id, :zipcode, :state_id, :company_id, :_destroy],
-                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, :_destroy],
+                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, :contact_type, :_destroy],
                     phones_attributes: [:id, :phone_number, :name_contact, :email, :_destroy]
     
     filter :regional

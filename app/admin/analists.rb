@@ -8,8 +8,6 @@ includes :regional
     permit_params :name, :email, :phone, :occupation, :job, :regional_id
 
     filter :name
-    filter :occupation, as: :select, collection: Analist.occupation.values
-    filter :job, as: :select, collection: Analist.job.values
     filter :regional
  
     action_item :back, only: [:show, :edit] do
@@ -22,8 +20,12 @@ includes :regional
         end
         column :email
         column :phone, input_html: {class: 'sp_celphones'}
-        column :occupation
-        column :job 
+        column "Cargo" do |cargo|
+            Analist.translate_human_enum_name(:occupation, cargo.occupation)
+        end
+        column "Atividade" do |atividade|
+            Analist.translate_human_enum_name(:job, atividade.job)
+        end
         column :regional do |regional|
             regional.regional.initials
         end
@@ -34,8 +36,8 @@ includes :regional
             f.input :name, require: true, input_html: {class: 'maiusculo'}
             f.input :email, input_html: {class: 'minusculo'}
             f.input :phone, input_html: {class: 'sp_celphones'}
-            f.input :occupation
-            f.input :job
+            f.input :occupation, as: :select, collection: Analist.occupation_attributes_for_select, input_html: {class: 'select'}
+            f.input :job, as: :select, collection: Analist.job_attributes_for_select, input_html: {class: 'select'}
             f.input :regional, require: true
         end
         f.actions
@@ -46,8 +48,12 @@ includes :regional
                 row :name
                 row :email
                 row :phone, input_html: {class: 'sp_celphones'}
-                row :occupation
-                row :job
+                row "Cargo" do |cargo|
+                    Analist.translate_human_enum_name(:occupation, cargo.occupation)
+                end
+                row "Atividade" do |atividade|
+                    Analist.translate_human_enum_name(:job, atividade.job)
+                end
                 row "Regional" do |regional|
                     regional.regional.initials
                 end
