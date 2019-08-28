@@ -46,7 +46,7 @@ ActiveAdmin.register Contact do
     end
     show title: "Face Time" do
         columns do 
-            column max_width: "800px", min_width: "500px" do 
+            column max_width: "800px", min_width: "300px" do 
                 panel "" do 
                     attributes_table_for contact do 
                         row :company 

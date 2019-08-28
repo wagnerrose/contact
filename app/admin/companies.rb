@@ -1,4 +1,5 @@
 ActiveAdmin.register Company do
+
     includes :regional, :phones, :contacts, :addresses
 
     menu parent: 'company'
@@ -9,9 +10,13 @@ ActiveAdmin.register Company do
                     :code_cnpj, 
                     :sap, 
                     :regional_id,
-                    addresses_attributes: [:id, :street, :county_id, :zipcode, :state_id, :company_id, :_destroy],
-                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, :contact_type, :_destroy],
-                    phones_attributes: [:id, :phone_number, :name_contact, :email, :_destroy]
+                    addresses_attributes: [:id, :street, :county_id, :zipcode, :state_id, 
+                        :company_id, :_destroy],
+                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, 
+                        :contact_type, :_destroy],
+                    phones_attributes: [:id, :phone_number, :name_contact, :email, :_destroy],
+                    purchases_attributes: [:id, :isp, :service, :band, :value, :comment,
+                        :company_id, :created_at, :updated_at, :_destroy]
     
     filter :regional
     filter :name
@@ -64,22 +69,35 @@ ActiveAdmin.register Company do
                                 allow_destroy: true,
                                 new_record: true do |a|
                         a.input :name_contact, require: true, input_html: {class: 'maiusculo'}
-                        a.input :phone_number, require: true, input_html: {class: 'sp_celphones'} 
+                        a.input :phone_number, require: true, wrapper_html: {class: 'telefone'} 
                         a.input :email, as: :email, input_html: {class: 'minusculo'}
                     end
                 end
             end
+            tab "Compras" do 
+                f.inputs "detalhes" do
+                    f.has_many :purchases,
+                                allow_destroy: true,
+                                new_record: true do |a|
+                        a.input :isp, require: true, input_html: {class: 'maiusculo'}
+                        a.input :service, require: true, as: :select, collection: Purchase.service_attributes_for_select, input_html: {class: 'select'}
+                        a.input :band, require: true
+                        a.input :value, require: true
+                        a.input :comment, as: :text
+                    end
+                end
+            end            
         end
         f.actions
     end
     show do
         panel 'Empresa' do
-            attributes_table_for company do
-                row :name
-                row :fantasy
-                row :code_cnpj, input_html: {class: 'cnpj'} 
-                row :sap
-                row "Regional" do |regional|
+            table_for company do
+                column :name
+                column :fantasy
+                column :code_cnpj, input_html: {class: 'cnpj'} 
+                column :sap
+                column "Regional" do |regional|
                     regional.regional.name
                 end
             end
@@ -100,7 +118,7 @@ ActiveAdmin.register Company do
         panel 'Telefone(s)' do
             table_for company.phones do
                 column :name_contact
-                column :phone_number, input_html: {class: 'sp_celphones'} 
+                column :phone_number, input_html: {class: 'telefone'} 
                 column :email
             end
         end
@@ -115,6 +133,23 @@ ActiveAdmin.register Company do
                 column :date, as: :datepicker
                 column :description
             end
-        end       
+        end
+        panel 'Compras' do
+            table_for company.purchases do
+                column :isp do |provedor|
+                    strong{provedor.isp}
+                end
+                column "Serviço" do |tipo|
+                    Purchase.translate_human_enum_name(:service, tipo.service)
+                end
+                column :band
+                column :value do |cur|
+                    number_to_currency(cur.value)
+                end 
+                column :comment
+                column (:created_at) {|criado| CompanyDecorator.new(criado).CriadoEm} 
+                column (:updated_at) {|atualizado| CompanyDecorator.new(atualizado).AtualizadoEm}
+            end               
+        end
     end
 end

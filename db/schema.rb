@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_133748) do
+ActiveRecord::Schema.define(version: 2019_08_27_113444) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "plpgsql" 
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -101,6 +101,18 @@ ActiveRecord::Schema.define(version: 2019_08_26_133748) do
     t.index ["company_id"], name: "index_phones_on_company_id"
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.string "isp"
+    t.integer "service"
+    t.float "band"
+    t.float "value"
+    t.text "comment"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_purchases_on_company_id"
+  end
+
   create_table "regionals", force: :cascade do |t|
     t.string "code"
     t.string "name"
@@ -125,4 +137,5 @@ ActiveRecord::Schema.define(version: 2019_08_26_133748) do
   add_foreign_key "contacts", "companies"
   add_foreign_key "counties", "states"
   add_foreign_key "phones", "companies"
+  add_foreign_key "purchases", "companies"
 end

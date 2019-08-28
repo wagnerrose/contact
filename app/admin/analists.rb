@@ -19,7 +19,7 @@ includes :regional
             strong {link_to nome.name, admin_analist_path(nome.id), title: "Editar/Apagar"}
         end
         column :email
-        column :phone, input_html: {class: 'sp_celphones'}
+        column :phone, input_html: {class: 'telefone'}
         column "Cargo" do |cargo|
             Analist.translate_human_enum_name(:occupation, cargo.occupation)
         end
@@ -35,7 +35,7 @@ includes :regional
         f.inputs 'Analista' do
             f.input :name, require: true, input_html: {class: 'maiusculo'}
             f.input :email, input_html: {class: 'minusculo'}
-            f.input :phone, input_html: {class: 'sp_celphones'}
+            f.input :phone, input_html: {class: 'telefone'}
             f.input :occupation, as: :select, collection: Analist.occupation_attributes_for_select, input_html: {class: 'select'}
             f.input :job, as: :select, collection: Analist.job_attributes_for_select, input_html: {class: 'select'}
             f.input :regional, require: true
@@ -47,7 +47,7 @@ includes :regional
             attributes_table_for analist do
                 row :name
                 row :email
-                row :phone, input_html: {class: 'sp_celphones'}
+                row :phone, input_html: {class: 'telefone'}
                 row "Cargo" do |cargo|
                     Analist.translate_human_enum_name(:occupation, cargo.occupation)
                 end

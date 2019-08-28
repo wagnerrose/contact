@@ -37,6 +37,9 @@ pt-BR:
       phone:
         one: "Telefone"
         other: "Telefones"
+      purchase:
+        one: "Compra"
+        other: "Compras"
       regional:
         one: "Regional"
         other: "Regionais"
@@ -108,7 +111,23 @@ pt-BR:
       phone:
         name_contact: "Contato"
         phone_number: "Telefone"
-        company: "Empresa"      
+        company: "Empresa"
+      purchase:
+        isp: "Provedor"
+        service: "Serviço"
+        services:
+          p2_ptt: "CONEXÃO PTT"
+          p2p: "PONTO-A-PONTO"
+          ip_pnbl: "IP PNBL"
+          ip: "INTERNET"
+          ip_telebras: "IP TELEBRAS"
+          sat: "SATELITE"
+          telebras_sat: "TELEBRAS SAT"
+        band: "Banda(Mbps)"
+        value: "Preço(Mpbs)"
+        comment: "Comentário"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"        
       regional:
         code: "Código"
         name: "Área"
@@ -285,6 +304,9 @@ pt-BR:
         sap: "Código de Cadastro SAP"
         code_cnpj: "Código de Cadastro CNPJ"
         regional: "Regional de Atendimento"
+      purchase:
+        isp: "Provedor"
+        service: "Serviço contratado"
     placeholders:
       analist:
         name: "Informe o nome do analista"
@@ -292,3 +314,8 @@ pt-BR:
       company:
         name: "Informe a Razão Social"
         fantasy: "Informe o nome fantasia"
+      purchase:
+        isp: "Informe o provedor de serviço"
+        service: "Informe o serviço contratado"
+        band: "Informe a banda contratada em Mbps"
+        value: "Informe o valor pago por Mbps"

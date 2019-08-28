@@ -15,6 +15,4 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
-//= require jquery-mask-plugin
 //= require_tree .
-
