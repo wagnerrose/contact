@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_113444) do
+ActiveRecord::Schema.define(version: 2019_08_29_212128) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql" 
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -91,8 +91,16 @@ ActiveRecord::Schema.define(version: 2019_08_27_113444) do
     t.index ["state_id"], name: "index_counties_on_state_id"
   end
 
+  create_table "phone_numbers", force: :cascade do |t|
+    t.string "number"
+    t.integer "type"
+    t.bigint "phone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phone_id"], name: "index_phone_numbers_on_phone_id"
+  end
+
   create_table "phones", force: :cascade do |t|
-    t.string "phone_number"
     t.string "name_contact"
     t.bigint "company_id"
     t.datetime "created_at", null: false
@@ -110,6 +118,10 @@ ActiveRecord::Schema.define(version: 2019_08_27_113444) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.date "renewal_date"
+    t.string "origin"
+    t.string "destiny"
     t.index ["company_id"], name: "index_purchases_on_company_id"
   end
 
@@ -136,6 +148,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_113444) do
   add_foreign_key "contacts", "analists"
   add_foreign_key "contacts", "companies"
   add_foreign_key "counties", "states"
+  add_foreign_key "phone_numbers", "phones"
   add_foreign_key "phones", "companies"
   add_foreign_key "purchases", "companies"
 end

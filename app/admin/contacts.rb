@@ -13,16 +13,14 @@ ActiveAdmin.register Contact do
     scope "Contactar", :nok
     scope "Ok", :ok
 
-    action_item :back, only: [:show, :edit] do
-        link_to "Voltar", admin_contacts_path
-    end
-    
+    actions :index
+
     index title: "Face Time" do
         column "Face Time" do |facetime|
-            strong {link_to facetime.id, admin_contact_path(facetime.id), title: "Editar/Apagar"}
+            strong {facetime.id}
         end
         column "Empresa" do |empresa|
-            empresa.company.name
+            strong{link_to empresa.company.name, edit_admin_company_path(empresa.company.id), title: "Edita ou Apaga Empresa"}
         end
         column "Analista" do |analista|
             analista.analist.name
@@ -32,36 +30,6 @@ ActiveAdmin.register Contact do
             Contact.translate_human_enum_name(:contact_type, tipo.contact_type)
         end
         column :description
-    end
-    form  title: "Face Time" do |f|
-        f.semantic_errors *f.object.errors.keys
-        f.inputs 'Face Time' do
-            f.input :company, require: true, input_html: {class: 'maiusculo'}
-            f.input :analist, require: true
-            f.input :date, require:true,  as: :date_picker
-            f.input :contact_type, as: :select, collection: Contact.contact_type_attributes_for_select, input_html: {class: 'select'}
-            f.input :description, as: :text
-        end 
-        f.actions 
-    end
-    show title: "Face Time" do
-        columns do 
-            column max_width: "800px", min_width: "300px" do 
-                panel "" do 
-                    attributes_table_for contact do 
-                        row :company 
-                        row "Analista" do |analista| 
-                            analista.analist.name
-                        end 
-                        row :date, as: :datepicker, datepicker_options: {date_Format: 'dd/mm/yy'}
-                        tag_row "Tipo contato" do |tipo|
-                            Contact.translate_human_enum_name(:contact_type, tipo.contact_type)
-                        end
-                        row :description
-                    end 
-                end 
-            end 
-        end 
     end
 end
  

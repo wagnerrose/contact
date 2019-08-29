@@ -14,9 +14,10 @@ ActiveAdmin.register Company do
                         :company_id, :_destroy],
                     contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, 
                         :contact_type, :_destroy],
-                    phones_attributes: [:id, :phone_number, :name_contact, :email, :_destroy],
+                    phones_attributes: [:id, :name_contact, :email, :_destroy],
+                    phones_number_attributes: [:id, :number, :type, :_destroy],
                     purchases_attributes: [:id, :isp, :service, :band, :value, :comment,
-                        :company_id, :created_at, :updated_at, :_destroy]
+                        :company_id, :status, :renewal_date, :origin, :destiny, :created_at, :updated_at, :_destroy]
     
     filter :regional
     filter :name
@@ -28,7 +29,7 @@ ActiveAdmin.register Company do
 
     index do
         column 'Nome' do |nome|
-            strong {link_to nome.name, admin_company_path(nome.id), title: "Editar/Apagar"}
+            strong {link_to nome.name, admin_company_path(nome.id), title: "Edita ou Apaga Empresa."}
         end
         column :fantasy
         column :code_cnpj, input_html: {class: 'cnpj'} 
@@ -65,14 +66,30 @@ ActiveAdmin.register Company do
             end
             tab "Telefones" do 
                 f.inputs "detalhes" do
-                    f.has_many :phones,
-                                allow_destroy: true,
-                                new_record: true do |a|
-                        a.input :name_contact, require: true, input_html: {class: 'maiusculo'}
-                        a.input :phone_number, require: true, wrapper_html: {class: 'telefone'} 
-                        a.input :email, as: :email, input_html: {class: 'minusculo'}
+                    f.has_many :phones, allow_destroy: true, new_record: true  do |p|
+                        p.input :name_contact, require: true, input_html: {class: 'maiusculo'}
+                        p.input :email, as: :email, input_html: {class: 'minusculo'}
+                        p.has_many :phone_numbers, allow_destroy: true, new_record: true do |pn|
+                            pn.input :number
+                            pn.input :type, as: :select, 
+                                    collection: PhoneNumber.type_attributes_for_select, 
+                                    input_html: {class: 'select2'}
+                        end
                     end
                 end
+            end
+            tab "Face Time" do
+                f.inputs 'Face Time' do
+                    f.has_many :contacts,
+                        allow_destroy: true,
+                        new_record: true do |a|                    
+                        a.input :company, require: true, input_html: {class: 'maiusculo'}
+                        a.input :analist, require: true
+                        a.input :date, require:true,  as: :date_picker
+                        a.input :contact_type, as: :select, collection: Contact.contact_type_attributes_for_select, input_html: {class: 'select'}
+                        a.input :description, as: :text
+                    end
+                end 
             end
             tab "Compras" do 
                 f.inputs "detalhes" do
@@ -80,9 +97,13 @@ ActiveAdmin.register Company do
                                 allow_destroy: true,
                                 new_record: true do |a|
                         a.input :isp, require: true, input_html: {class: 'maiusculo'}
-                        a.input :service, require: true, as: :select, collection: Purchase.service_attributes_for_select, input_html: {class: 'select'}
+                        a.input :service, require: true, as: :select, collection: Purchase.service_attributes_for_select, input_html: {class: 'select2'}
+                        a.input :origin, as: :select, collection: County.all.map {|loc| [loc.name, loc.name]}, input_html: {class: 'select2'} 
+                        a.input :destiny, as: :select, collection: County.all.map {|loc| [loc.name, loc.name]}, input_html: {class: 'select2'} 
+                        a.input :status, require: true, as: :select, collection: Purchase.status_attributes_for_select, input_html: {class: 'select2'} 
                         a.input :band, require: true
                         a.input :value, require: true
+                        a.input :renewal_date, as: :datepicker
                         a.input :comment, as: :text
                     end
                 end
@@ -118,14 +139,13 @@ ActiveAdmin.register Company do
         panel 'Telefone(s)' do
             table_for company.phones do
                 column :name_contact
-                column :phone_number, input_html: {class: 'telefone'} 
                 column :email
             end
         end
         panel 'Face Time' do
             table_for company.contacts do
                 column "Face Time" do |facetime|
-                    strong {link_to facetime.id, admin_contact_path(facetime.id), title: "Edita/Apaga Face Time"}
+                    strong {facetime.id}
                 end
                 column "Analista" do |analista|
                     analista.analist.name
@@ -142,12 +162,17 @@ ActiveAdmin.register Company do
                 column "Serviço" do |tipo|
                     Purchase.translate_human_enum_name(:service, tipo.service)
                 end
+                column :origin
+                column :destiny
                 column :band
                 column :value do |cur|
                     number_to_currency(cur.value)
+                end
+                column "Status" do |status|
+                    Purchase.translate_human_enum_name(:status, status.status)
                 end 
                 column :comment
-                column (:created_at) {|criado| CompanyDecorator.new(criado).CriadoEm} 
+                column (:renewal_date) {|atualizado| CompanyDecorator.new(atualizado).AtualizadoEm}
                 column (:updated_at) {|atualizado| CompanyDecorator.new(atualizado).AtualizadoEm}
             end               
         end

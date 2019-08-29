@@ -9,5 +9,4 @@ class County < ApplicationRecord
   before_save {
     self.name.upcase!
   }
-
 end

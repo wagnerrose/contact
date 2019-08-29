@@ -62,6 +62,8 @@ group :development do
   # Better Errors replaces the standard Rails error page with a much better and more useful error page.
   gem 'better_errors'
   gem "binding_of_caller"
+  # A mini view framework for console/irb that's easy to use, even while under its influence.
+  # gem 'hirb'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

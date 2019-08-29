@@ -37,6 +37,9 @@ pt-BR:
       phone:
         one: "Telefone"
         other: "Telefones"
+      phone_number:
+        one: "Número de Telefone"
+        other: "Números de Telefones
       purchase:
         one: "Compra"
         other: "Compras"
@@ -112,6 +115,14 @@ pt-BR:
         name_contact: "Contato"
         phone_number: "Telefone"
         company: "Empresa"
+      phone_number:
+        number: "Telefone"
+        type: "Tipo"
+        types:
+          mobile: "Móvel"
+          work: "Trabalho"
+          home: "Residencial"
+          fax: "Fax"
       purchase:
         isp: "Provedor"
         service: "Serviço"
@@ -126,6 +137,13 @@ pt-BR:
         band: "Banda(Mbps)"
         value: "Preço(Mpbs)"
         comment: "Comentário"
+        status: "Status"
+        statuses:
+          ativated: "Ativado"
+          proposal: "Proposta"
+        renewal_date: "Renova em"
+        origin: "Origem"
+        destiny: "Destino"
         created_at: "Criado em"
         updated_at: "Atualizado em"        
       regional:
