@@ -10,14 +10,12 @@ ActiveAdmin.register Company do
                     :code_cnpj, 
                     :sap, 
                     :regional_id,
-                    addresses_attributes: [:id, :street, :county_id, :zipcode, :state_id, 
-                        :company_id, :_destroy],
-                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, 
-                        :contact_type, :_destroy],
-                    phones_attributes: [:id, :name_contact, :email, :_destroy],
-                    phones_number_attributes: [:id, :number, :type, :_destroy],
+                    addresses_attributes: [:id, :street, :county_id, :zipcode, :state_id,:company_id, :_destroy],
+                    contacts_attribuites: [:id, :date, :description, :company_id, :analist_id, :contact_type, :_destroy],
+                    phones_attributes: [:id, :name_contact, :email, :_destroy,
+                    phone_numbers_attributes: [:id, :number, :phone_type, :_destroy, :phone_id]],
                     purchases_attributes: [:id, :isp, :service, :band, :value, :comment,
-                        :company_id, :status, :renewal_date, :origin, :destiny, :created_at, :updated_at, :_destroy]
+                        :company_id, :status, :renewal_date, :origin, :destiny, :_destroy]
     
     filter :regional
     filter :name
@@ -70,9 +68,9 @@ ActiveAdmin.register Company do
                         p.input :name_contact, require: true, input_html: {class: 'maiusculo'}
                         p.input :email, as: :email, input_html: {class: 'minusculo'}
                         p.has_many :phone_numbers, allow_destroy: true, new_record: true do |pn|
-                            pn.input :number
-                            pn.input :type, as: :select, 
-                                    collection: PhoneNumber.type_attributes_for_select, 
+                            pn.input :number, input_html: {class: 'telefone'}
+                            pn.input :phone_type, as: :select, 
+                                    collection: PhoneNumber.phone_type_attributes_for_select, 
                                     input_html: {class: 'select2'}
                         end
                     end
@@ -80,12 +78,10 @@ ActiveAdmin.register Company do
             end
             tab "Face Time" do
                 f.inputs 'Face Time' do
-                    f.has_many :contacts,
-                        allow_destroy: true,
-                        new_record: true do |a|                    
+                    f.has_many :contacts, allow_destroy: true, new_record: true do |a|                    
                         a.input :company, require: true, input_html: {class: 'maiusculo'}
                         a.input :analist, require: true
-                        a.input :date, require:true,  as: :date_picker
+                        a.input :date, as: :datepicker, require: true, datepicker_options: {date_Format: 'dd/mm/yy'}
                         a.input :contact_type, as: :select, collection: Contact.contact_type_attributes_for_select, input_html: {class: 'select'}
                         a.input :description, as: :text
                     end
@@ -93,9 +89,7 @@ ActiveAdmin.register Company do
             end
             tab "Compras" do 
                 f.inputs "detalhes" do
-                    f.has_many :purchases,
-                                allow_destroy: true,
-                                new_record: true do |a|
+                    f.has_many :purchases, allow_destroy: true, new_record: true do |a|
                         a.input :isp, require: true, input_html: {class: 'maiusculo'}
                         a.input :service, require: true, as: :select, collection: Purchase.service_attributes_for_select, input_html: {class: 'select2'}
                         a.input :origin, as: :select, collection: County.all.map {|loc| [loc.name, loc.name]}, input_html: {class: 'select2'} 
@@ -114,17 +108,18 @@ ActiveAdmin.register Company do
     show do
         panel 'Empresa' do
             table_for company do
-                column :name
-                column :fantasy
-                column :code_cnpj, input_html: {class: 'cnpj'} 
-                column :sap
+                column 'Nome' do |nome|
+                    strong {link_to nome.name, edit_admin_company_path(nome.id), title: "Edita ou Apaga Empresa."}
+                end
+                column "Nome Fantasia",:fantasy
+                column "CNPJ",:code_cnpj, input_html: {class: 'cnpj'} 
+                column "SAP",:sap
                 column "Regional" do |regional|
                     regional.regional.name
                 end
             end
-        end
-        panel 'Endereço(s)' do
             table_for company.addresses do
+                hr
                 column :street
                 column "Cidade" do |cidade|
                     cidade.county.name
@@ -134,12 +129,16 @@ ActiveAdmin.register Company do
                     estado.state.name
                 end
             end
-        end
-
-        panel 'Telefone(s)' do
+            hr
             table_for company.phones do
                 column :name_contact
                 column :email
+                column "telefone" do |telefone|
+                    company.phone_numbers.map(&:number).join("<br />").html_safe
+                end
+                column "Tipo" do |tipo|
+                    company.phone_numbers.map(&:phone_type).join("<br />").html_safe
+                end                    
             end
         end
         panel 'Face Time' do

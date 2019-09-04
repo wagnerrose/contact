@@ -9,7 +9,6 @@
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 
-//@import "active_material";
 
 // Active Admin's got SASS!
 // Formadmin - Modern and responsive theme for Active Admin used by Formaweb.
@@ -37,8 +36,9 @@ $warning-color: $yellow !default;
 
 
 //--- Theme ---//
-$primary-color: #1963da !default;
+$primary-color: #005fb2 !default;
 $secondary-color: $silver !default;
+
 
 //--- Page ---//
 $background-color: #eeeeee !default;
@@ -48,7 +48,6 @@ $text-color:       $gray !default;
 $highlight-background: rgba($primary-color, 0.5) !default;
 $highlight-color: $white !default;
 
-$font-size: 12px !default;
 
 .maiusculo {
   text-transform: uppercase;
@@ -57,15 +56,7 @@ $font-size: 12px !default;
   text-transform: lowercase;
 }
 
-body.active_admin {
-    #active_admin_content.left_sidebar, #active_admin_content.collapsed_sidebar {
-      .collapse_btn, .uncollapse_btn {
-          background-color: #767270;
-      }
-    }
-   }
-
-@import 'formadmin/formadmin';
+ @import "arctic_admin/base";
 
 
 // Overriding any non-variable SASS must be done after the fact.

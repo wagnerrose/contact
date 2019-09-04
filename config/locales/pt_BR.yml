@@ -39,7 +39,7 @@ pt-BR:
         other: "Telefones"
       phone_number:
         one: "Número de Telefone"
-        other: "Números de Telefones
+        other: "Números de Telefones"
       purchase:
         one: "Compra"
         other: "Compras"
@@ -117,8 +117,8 @@ pt-BR:
         company: "Empresa"
       phone_number:
         number: "Telefone"
-        type: "Tipo"
-        types:
+        phone_type: "Tipo"
+        phone_types:
           mobile: "Móvel"
           work: "Trabalho"
           home: "Residencial"
@@ -311,7 +311,7 @@ pt-BR:
     labels:
       contact:
         contact_type:
-          phone: "telefone"
+          phone: "Telefone"
     hints:
       analist:
         name: "Nome Analista"

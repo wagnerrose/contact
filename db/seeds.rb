@@ -8,20 +8,21 @@
 require 'faker'
 Faker::Config.locale = 'pt-BR'
 
-puts "Cadastrando contatos --> Aguarde"
-empresas = Company.ids
-analistas = Analist.ids
+puts "Cadastrando Telefones --> Aguarde"
+telefones = Phone.ids
 
 500.times do
-    descricao = Faker::Lorem.paragraph
-    descricao.gsub!(/["]/,'')
-    contato = Contact.create(
-        date: Faker::Date.between(1.year.ago, Date.today),
-        description: descricao,
-        company_id: empresas.sample,
-        analist_id: analistas.sample
+    telefone_id = telefones.sample
+    telefone = PhoneNumber.create(
+        number: Faker::PhoneNumber.phone_number,
+        phone_id: telefone_id
     )
-    puts "Cadastrado contato: #{contato.date}, #{contato.company_id}, #{contato.analist_id}"
+    puts "Cadastrado telefone: #{telefone.number}, #{telefone.phone_id}"
+    telefone = PhoneNumber.create(
+        number: Faker::PhoneNumber.cell_phone,
+        phone_id: telefone_id
+    )
+    puts "Cadastrado Celular: #{telefone.number}, #{telefone.phone_id}"
 end
 
-puts "Cadastrado contatos --> Ok!"
+puts "Cadastrados Telefones --> Ok!"

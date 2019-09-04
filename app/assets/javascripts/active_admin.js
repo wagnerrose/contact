@@ -1,6 +1,7 @@
-//= require active_admin/base
+//= require arctic_admin/base
 //= require activeadmin_addons/all
 //= require jquery-mask-plugin
+
 
 /* Brazilian initialisation for the jQuery UI date picker plugin. */
 /* Written by Leonildo Costa Silva (leocsilva@gmail.com). */

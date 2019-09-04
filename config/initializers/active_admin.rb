@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = "LOGO_HORIZONTAL NEGATIVA MARGEM.png"
+  #config.site_title_image = "LOGO_HORIZONTAL NEGATIVA MARGEM.png"
 
   # == Default Namespace
   #
@@ -326,4 +326,10 @@ ActiveAdmin.setup do |config|
   # You can inherit it with own class and inject it for all resources
   #
   # config.order_clause = MyOrderClause
+
+  # configuracao artic_admin 
+  meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
+  config.meta_tags = meta_tags_options
+  config.meta_tags_for_logged_out_pages = meta_tags_options
+
 end

@@ -46,8 +46,9 @@ gem 'active_admin_sidebar'
 gem 'enumerize'
 # internacionalização i18n 
 gem 'rails-i18n'
-# gem Modern and responsive theme for Active Admin used by Formaweb.
-gem 'formadmin'
+# Simple theme for ActiveAdmin
+gem 'arctic_admin'
+
 # This gem does some CPF/CNPJ magic. It allows you to create, 
 #  validate and format CPF/CNPJ, even through the command-line
 gem 'validates_cpf_cnpj'

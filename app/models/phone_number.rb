@@ -3,15 +3,15 @@ class PhoneNumber < ApplicationRecord
 
   validates :number, presence: { message: "O número do telefone deve ser informado."}
 
-  enum type: {
+  enum phone_type: {
     mobile: 0,
     home: 1,
     work: 2,
     fax: 3 }
 
-  def self.type_attributes_for_select
-    types.map do |tipo, _|
-      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.types.#{tipo}"), tipo]
+  def self.phone_type_attributes_for_select
+    phone_types.map do |tipo, _|
+      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.phone_types.#{tipo}"), tipo]
     end
   end
 end
