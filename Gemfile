@@ -59,6 +59,12 @@ group :development, :test do
 
 end
 
+####### Autenticacao e autorização
+### Flexible authentication solution for Rails with Warden
+gem 'devise'
+### The authorization Gem for Ruby on Rails. 
+gem 'cancancan'
+
 group :development do
   # Better Errors replaces the standard Rails error page with a much better and more useful error page.
   gem 'better_errors'

@@ -16,9 +16,6 @@ ActiveAdmin.register Contact do
     actions :index
 
     index title: "Face Time" do
-        style do
-            [".col-date{width: 100px}"].join('')
-        end
         column "Face Time" do |facetime|
             facetime.id
         end
