@@ -1,26 +1,39 @@
-<h2>Log in2</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="card card-login mx-auto mt-5">
+          <div class="card-header">Login</div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "E-mail", type: "email" %>
+              </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+              <div class="form-group">
+                  <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder: "password", type: "password" %>
+              </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+              <% if devise_mapping.rememberable? %>
+                <div class="form-group">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <%= f.check_box :remember_me %> Remember Me
+                    </label>
+                  </div>
+                </div>
+              <% end %>
+              <div class="btn btn-primary btn-block">
+                <%= f.submit "Log in" %>
+              </div>
+            </form>
+          </div>
+        </div>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+

@@ -1,4 +1,4 @@
-class CompanyDecorator < SimpleDelegator
+class DateDecorator < SimpleDelegator
     def initialize(data)
         @data = data
         super

@@ -51,7 +51,7 @@ pt-BR:
         other: "Estados"
       user:
         one: "Usuário"
-        other: "Usuaários"
+        other: "Usuários"
     attributes:
       active_admin/comment:
         author_type: "Autor Tipo"

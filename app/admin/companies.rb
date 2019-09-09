@@ -68,10 +68,10 @@ ActiveAdmin.register Company do
                         p.input :name_contact, require: true, input_html: {class: 'maiusculo'}
                         p.input :email, as: :email, input_html: {class: 'minusculo'}
                         p.has_many :phone_numbers, allow_destroy: true, new_record: true do |pn|
-                            pn.input :number, input_html: {class: 'telefone'}
+                            pn.input :number, input_html: {class: 'telefone', required: true}
                             pn.input :phone_type, as: :select, 
                                     collection: PhoneNumber.phone_type_attributes_for_select, 
-                                    input_html: {class: 'select2'}
+                                    input_html: {class: 'select2', required: true}
                         end
                     end
                 end
@@ -171,8 +171,8 @@ ActiveAdmin.register Company do
                     Purchase.translate_human_enum_name(:status, status.status)
                 end 
                 column :comment
-                column (:renewal_date) {|atualizado| CompanyDecorator.new(atualizado).AtualizadoEm}
-                column (:updated_at) {|atualizado| CompanyDecorator.new(atualizado).AtualizadoEm}
+                column (:renewal_date) {|atualizado| DateDecorator.new(atualizado).AtualizadoEm}
+                column (:updated_at) {|atualizado| DateDecorator.new(atualizado).AtualizadoEm}
             end               
         end
     end
